@@ -1,0 +1,18 @@
+header {
+    padding: 30px;
+}
+
+.header-wrapper {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+}
+
+.nav-links {
+    width: 800px;
+    display: flex;
+    margin: 0 auto;
+}
+
+.nav-links li:not(:last-child) {
+    margin-right: 40px;
+}

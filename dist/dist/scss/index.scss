@@ -1,0 +1,78 @@
+@import './fonts.scss';
+@import './header.scss';
+@import './calculator';
+@import './components/slider.scss';
+@import './components/slick.css';
+//@import './components/slick-theme.css';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: BigNoodle;
+    background-color: #fafbff;
+    color: #000046;
+}
+
+.auto-search-results li p {
+    font-family: Arial;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.container {
+    max-width: 1440px;
+    margin: auto;
+}
+
+
+.slider {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+.slider img {
+    width: 100%;
+}
+
+#map {
+    height: 0px;
+}
+
+footer {
+    padding: 20px;
+    text-align: center;
+    background-color: black;
+    color: white;
+}
+
+.modal-confirmation {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    overflow: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    display: none;
+    flex-flow: column nowrap;
+    justify-content: center; /* см. ниже */
+    align-items: center;
+    z-index: 99;
+    /* Чтобы окно не прилипало к границе
+    браузера установим отступы */
+    padding:30px 0;
+    font-size: 100px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
