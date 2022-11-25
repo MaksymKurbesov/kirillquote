@@ -1,0 +1,31 @@
+.slider-wrapper {
+    position: relative;
+    padding: 0 20px;
+}
+
+
+.prev-slider-button {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background: url("../../src/images/prev-arrow.png");
+    background-size: 50px 50px;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 28px;
+    border: none;
+}
+
+.next-slider-button {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background: url("../../src/images/next-arrow.png");
+    background-size: 50px 50px;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 28px;
+    border: none,
+}
