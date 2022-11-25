@@ -24,9 +24,12 @@ module.exports = {
                 use: [miniCss.loader, 'css-loader', 'sass-loader'],
             },
             {
-                test: /\.(png|svg|jpg|gif|woff(2)?|ttf|eot|svg|otf)$/,
+                test: /\.(png|jpg|gif|woff(2)?|ttf|eot|svg|otf)$/,
                 type: 'asset/resource',
-                dependency: { not: ['url'] },
+            },
+            {
+                test: /\.html$/i,
+                loader: 'html-loader',
             },
         ],
     },
@@ -34,9 +37,6 @@ module.exports = {
         new HtmlWebpackPlugin({ template: './src/index.html' }),
         new miniCss({
             filename: 'style.css',
-        }),
-        new CopyPlugin({
-            patterns: [{ from: 'src', to: 'dist' }],
         }),
     ],
     devServer: {

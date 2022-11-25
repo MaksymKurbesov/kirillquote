@@ -1,1 +1,0 @@
-import $ from"jquery";import"slick-carousel";const prevButtonComponent=document.querySelector(".prev-slider-button"),nextButtonComponent=document.querySelector(".next-slider-button");$(".slider").slick({arrows:!0,nextArrow:nextButtonComponent,prevArrow:prevButtonComponent});
