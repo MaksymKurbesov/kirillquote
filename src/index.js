@@ -1,4 +1,4 @@
-import './scss/index.scss'
+import './scss/pages/index.scss'
 import { autoCompletes, getDistance } from './js/autoCompletes'
 import './js/changeCalculatorStep'
 import './js/slider'

@@ -1,0 +1,193 @@
+.calculator-title {
+    font-size: 40px;
+    margin-bottom: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.process-steps {
+    display: grid;
+    grid-template-columns: 250px 250px 250px;
+    justify-content: center;
+    padding: 30px 0;
+    column-gap: 20px;
+}
+
+.process-steps div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    //background-color: rgba(187,246,127,0.2);
+    //border: 1px solid rgba(99,188,8,0.15);
+    border: 1px solid #000046;
+    padding: 20px 0;
+    border-radius: 20px;
+    padding: 20px 0;
+    width: 100%;
+}
+
+.active-step {
+    background-color: rgba(187,246,127,0.2);
+    border: 1px solid rgba(99,188,8,0.15);
+}
+
+.completed-step {
+    background-color: rgba(187,246,127,0.7);
+    border: 1px solid rgba(99,188,8,0.15);
+}
+
+.quote-form {
+    position: relative;
+    height: 400px;
+}
+
+
+.geocoder-control:nth-child(2) {
+    position: absolute;
+    left: 56px;
+    top: 0px;
+}
+
+.geocoder-control:nth-child(3) {
+    position: absolute;
+    left: 56px;
+    top: 40px;
+}
+
+.auto-search-wrapper label:nth-child(1) button {
+    top: -182px;
+}
+
+.auto-search-wrapper label:nth-child(2) button {
+    top: 37px;
+}
+
+.calculator {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.car-details, .user-info {
+    display: none;
+}
+
+.user-info input {
+    width: 100%;
+    border: 1px solid #d7d7d7;
+    box-shadow: none;
+    box-sizing: border-box;
+    font-size: 16px;
+    padding: 12px 45px 12px 10px;
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.top-row-calculator, .bottom-row-calculator {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.top-row-calculator p, .bottom-row-calculator p {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.top-row-calculator {
+    margin-bottom: 35px;
+}
+
+.top-row-calculator select, .bottom-row-calculator select  {
+    font-size: 20px;
+    width: 100%;
+    padding: 5px;
+}
+
+.search-from-label, .search-to-label, .delivery-time  {
+    display: block;
+    margin-bottom: 30px;
+}
+
+.search-from-label p, .search-to-label p, .user-info p {
+    margin-bottom: 10px;
+    font-size: 16px;
+    //font-family: Arial;
+}
+
+p.label-title  {
+    font-family: BigNoodle;
+    font-size: 24px;
+}
+
+.search-from-label p {
+    padding-left: 20px;
+    background: url("../../images/from.svg") no-repeat left;
+}
+
+.search-to-label p {
+    padding-left: 20px;
+    background: url("../../images/to.svg") no-repeat left;
+}
+
+.auto-search-wrapper input {
+    border-radius: 8px;
+}
+
+.delivery-time p {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    background: url("../../images/time.svg") no-repeat left;
+}
+
+.delivery-time input {
+    padding: 10px;
+    width: 150px;
+}
+
+.carrier-type {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+
+
+.price-text {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.calculate-button {
+    padding: 7px;
+    font-size: 16px;
+    font-weight: bold;
+    background: none;
+    margin-bottom: 30px;
+}
+
+.next-button {
+    padding: 10px 35px;
+    font-size: 16px;
+    font-weight: bold;
+    background: none;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    font-family: BigNoodle;
+}
+
+.calculate-quote {
+    padding: 10px 35px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: 2px solid black;
+    cursor: pointer;
+    width: 100%;
+    display: none;
+    margin-bottom: 30px;
+    text-align: center;
+    color: black;
+}

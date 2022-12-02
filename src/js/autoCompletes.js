@@ -4,158 +4,158 @@ let latLngFrom
 let latLngTo
 
 function autoCompletes(map) {
-    new Autocomplete('search', {
-        selectFirst: true,
+  new Autocomplete('from', {
+    selectFirst: true,
 
-        howManyCharacters: 2,
+    howManyCharacters: 2,
 
-        onSearch: ({ currentValue }) => {
-            const api = `https://nominatim.openstreetmap.org/search?format=geojson&limit=5&city=${encodeURI(
-                currentValue
-            )}`
+    onSearch: ({ currentValue }) => {
+      const api = `https://nominatim.openstreetmap.org/search?format=geojson&limit=5&city=${encodeURI(
+        currentValue
+      )}`
 
-            return new Promise((resolve) => {
-                fetch(api)
-                    .then((response) => response.json())
-                    .then((data) => {
-                        resolve(data.features)
-                    })
-                    .catch((error) => {
-                        console.error(error)
-                    })
-            })
-        },
+      return new Promise((resolve) => {
+        fetch(api)
+          .then((response) => response.json())
+          .then((data) => {
+            resolve(data.features)
+          })
+          .catch((error) => {
+            console.error(error)
+          })
+      })
+    },
 
-        onResults: ({ currentValue, matches, template }) => {
-            const regex = new RegExp(currentValue, 'gi')
-            return matches === 0
-                ? template
-                : matches
-                      .map((element) => {
-                          return `
+    onResults: ({ currentValue, matches, template }) => {
+      const regex = new RegExp(currentValue, 'gi')
+      return matches === 0
+        ? template
+        : matches
+            .map((element) => {
+              return `
           <li class="loupe">
             <p>
               ${element.properties.display_name.replace(
-                  regex,
-                  (str) => `<b>${str}</b>`
+                regex,
+                (str) => `<b>${str}</b>`
               )}
             </p>
           </li> `
-                      })
-                      .join('')
-        },
-
-        onSubmit: ({ object }) => {
-            map.eachLayer(function (layer) {
-                if (!!layer.toGeoJSON) {
-                    map.removeLayer(layer)
-                }
             })
+            .join('')
+    },
 
-            const { display_name } = object.properties
-            const [lng, lat] = object.geometry.coordinates
-            latLngFrom = {
-                lat: object.geometry.coordinates[0],
-                lng: object.geometry.coordinates[1],
-            }
+    onSubmit: ({ object }) => {
+      map.eachLayer(function (layer) {
+        if (!!layer.toGeoJSON) {
+          map.removeLayer(layer)
+        }
+      })
 
-            console.log('submit')
+      const { display_name } = object.properties
+      const [lng, lat] = object.geometry.coordinates
+      latLngFrom = {
+        lat: object.geometry.coordinates[0],
+        lng: object.geometry.coordinates[1],
+      }
 
-            // latLngFrom = new google.maps.LatLng(lng, lat)
+      console.log('submit')
 
-            const marker = L.marker([lat, lng], {
-                title: display_name,
-            })
+      // latLngFrom = new google.maps.LatLng(lng, lat)
 
-            marker.addTo(map).bindPopup(display_name)
+      const marker = L.marker([lat, lng], {
+        title: display_name,
+      })
 
-            map.setView([lat, lng], 8)
-        },
+      marker.addTo(map).bindPopup(display_name)
 
-        onSelectedItem: ({ index, element, object }) => {
-            // console.log('onSelectedItem:', index, element, object)
-        },
+      map.setView([lat, lng], 8)
+    },
 
-        noResults: ({ currentValue, template }) =>
-            template(`<li>No results found: "${currentValue}"</li>`),
-    })
+    onSelectedItem: ({ index, element, object }) => {
+      // console.log('onSelectedItem:', index, element, object)
+    },
 
-    new Autocomplete('search2', {
-        selectFirst: true,
-        howManyCharacters: 2,
-        // onSearch
-        onSearch: ({ currentValue }) => {
-            const api = `https://nominatim.openstreetmap.org/search?format=geojson&limit=5&city=${encodeURI(
-                currentValue
-            )}`
+    noResults: ({ currentValue, template }) =>
+      template(`<li>No results found: "${currentValue}"</li>`),
+  })
 
-            return new Promise((resolve) => {
-                fetch(api)
-                    .then((response) => response.json())
-                    .then((data) => {
-                        resolve(data.features)
-                    })
-                    .catch((error) => {
-                        console.error(error)
-                    })
-            })
-        },
+  new Autocomplete('to', {
+    selectFirst: true,
+    howManyCharacters: 2,
+    // onSearch
+    onSearch: ({ currentValue }) => {
+      const api = `https://nominatim.openstreetmap.org/search?format=geojson&limit=5&city=${encodeURI(
+        currentValue
+      )}`
 
-        onResults: ({ currentValue, matches, template }) => {
-            const regex = new RegExp(currentValue, 'gi')
+      return new Promise((resolve) => {
+        fetch(api)
+          .then((response) => response.json())
+          .then((data) => {
+            resolve(data.features)
+          })
+          .catch((error) => {
+            console.error(error)
+          })
+      })
+    },
 
-            return matches === 0
-                ? template
-                : matches
-                      .map((element) => {
-                          return `
+    onResults: ({ currentValue, matches, template }) => {
+      const regex = new RegExp(currentValue, 'gi')
+
+      return matches === 0
+        ? template
+        : matches
+            .map((element) => {
+              return `
           <li class="loupe">
             <p>
               ${element.properties.display_name.replace(
-                  regex,
-                  (str) => `<b>${str}</b>`
+                regex,
+                (str) => `<b>${str}</b>`
               )}
             </p>
           </li> `
-                      })
-                      .join('')
-        },
-
-        onSubmit: ({ object }) => {
-            map.eachLayer(function (layer) {
-                if (!!layer.toGeoJSON) {
-                    map.removeLayer(layer)
-                }
             })
+            .join('')
+    },
 
-            const { display_name } = object.properties
-            const [lng, lat] = object.geometry.coordinates
+    onSubmit: ({ object }) => {
+      map.eachLayer(function (layer) {
+        if (!!layer.toGeoJSON) {
+          map.removeLayer(layer)
+        }
+      })
 
-            latLngTo = {
-                lat: object.geometry.coordinates[0],
-                lng: object.geometry.coordinates[1],
-            }
+      const { display_name } = object.properties
+      const [lng, lat] = object.geometry.coordinates
 
-            const marker = L.marker([lat, lng], {
-                title: display_name,
-            })
+      latLngTo = {
+        lat: object.geometry.coordinates[0],
+        lng: object.geometry.coordinates[1],
+      }
 
-            marker.addTo(map).bindPopup(display_name)
+      const marker = L.marker([lat, lng], {
+        title: display_name,
+      })
 
-            map.setView([lat, lng], 8)
-        },
+      marker.addTo(map).bindPopup(display_name)
 
-        onSelectedItem: ({ index, element, object }) => {
-            // console.log('onSelectedItem:', index, element, object)
-        },
+      map.setView([lat, lng], 8)
+    },
 
-        noResults: ({ currentValue, template }) =>
-            template(`<li>No results found: "${currentValue}"</li>`),
-    })
+    onSelectedItem: ({ index, element, object }) => {
+      // console.log('onSelectedItem:', index, element, object)
+    },
+
+    noResults: ({ currentValue, template }) =>
+      template(`<li>No results found: "${currentValue}"</li>`),
+  })
 }
 
 const getDistance = () => {
-    return SphericalUtil.computeDistanceBetween(latLngFrom, latLngTo)
+  return SphericalUtil.computeDistanceBetween(latLngFrom, latLngTo)
 }
 
 export { autoCompletes, getDistance }
